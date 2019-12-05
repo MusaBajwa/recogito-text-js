@@ -93,8 +93,8 @@ export default class App extends Component {
 
   render() {
     return (
+      <EscapeOutside onEscapeOutside={ this.handleEscapeOutside }>
       <Editor
-        onEscapeOutside={ this.handleEscapeOutside }
         open={this.state.showEditor}
         readOnly={this.props.readOnly}
         bounds={this.state.selectionBounds}
@@ -104,6 +104,7 @@ export default class App extends Component {
         onAnnotationUpdated={this.handleCreateOrUpdate('onAnnotationUpdated')}
         onCancel={this.handleCancel}>
       </Editor>
+      </EscapeOutside>
     );
   }  
   
