@@ -94,7 +94,7 @@ export default class App extends Component {
   render() {
     return (
       <Editor
-        onEscapeOutside={ this.handleEscapeOutside }>
+        onEscapeOutside={ this.handleEscapeOutside }
         open={this.state.showEditor}
         readOnly={this.props.readOnly}
         bounds={this.state.selectionBounds}
