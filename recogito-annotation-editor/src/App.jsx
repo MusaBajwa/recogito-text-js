@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Highlighter from 'recogito-text-highlights/selection/Highlighter';
 import SelectionHandler from 'recogito-text-highlights/selection/SelectionHandler';
 import Editor from './editor/Editor';
-
+import EscapeOutside from "react-escape-outside";
 import 'themes/theme.scss';
 
 /**
@@ -14,9 +14,10 @@ export default class App extends Component {
   state = {
     showEditor: false,
     selectionBounds: null,
-    selectedAnnotation: null
+    selectedAnnotation: null,
+    isOpen: false,
   }
-
+  
   /** Helper **/
   _clearState = () => {
     this.setState({
@@ -25,7 +26,7 @@ export default class App extends Component {
       selectedAnnotation: null
     });
   }
-
+  
   componentDidMount() {
     this.highlighter = new Highlighter(this.props.contentEl, this.props.formatter);
     this.selectionHandler = new SelectionHandler(this.props.contentEl, this.highlighter);
@@ -85,9 +86,15 @@ export default class App extends Component {
     this.highlighter.init(annotations);
   }
 
+  //handle escapeOutside
+  handleEscapeOutside() {
+    this.setState({ isOpen: false })
+  }
+
   render() {
     return (
       <Editor
+        onEscapeOutside={ this.handleEscapeOutside }>
         open={this.state.showEditor}
         readOnly={this.props.readOnly}
         bounds={this.state.selectionBounds}
@@ -99,5 +106,5 @@ export default class App extends Component {
       </Editor>
     );
   }  
-
+  
 }
