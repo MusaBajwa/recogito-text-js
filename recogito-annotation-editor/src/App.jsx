@@ -23,7 +23,8 @@ export default class App extends Component {
     this.setState({
       showEditor: false,
       selectionBounds: null,
-      selectedAnnotation: null
+      selectedAnnotation: null,
+      isOpen: false,
     });
   }
   
@@ -40,7 +41,8 @@ export default class App extends Component {
       this.setState({ 
         showEditor: true, 
         selectionBounds: clientRect,
-        selectedAnnotation: selection 
+        selectedAnnotation: selection,
+        isOpen: true,
       });
     } else {
       this._clearState();
