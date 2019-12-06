@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import useClickOutside from '../../useClickOutside';
+import useEscKey from '../../useEscKey'
 
 const DropdownMenu = props => {
 
@@ -7,6 +8,10 @@ const DropdownMenu = props => {
 
   // Custom hook that notifies when clicked outside this component
   useClickOutside(ref, () => props.onClickOutside());
+
+  useEscKey(ref, () => props.useEscKey());
+
+ 
 
   return (
     <ul ref={ref} className="comment-dropdown-menu">

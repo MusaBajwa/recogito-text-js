@@ -3,6 +3,7 @@ import setPosition from './setPosition';
 import TagWidget  from './widgets/tags/TagWidget';
 import TypeSelectorWidget from './widgets/type/TypeSelectorWidget';
 import CommentWidget from './widgets/comments/CommentWidget';
+import useEscKey from '../editor/useEscKey'
 
 /**
  * The popup editor component.
@@ -19,6 +20,9 @@ const Editor = props => {
 
   // Reference to the DOM element, so we can set position
   const element = useRef();
+
+  //Reference to useEscKey for when escape key is pressed
+  useEscKey(ref, () => props.useEscKey());
 
   // Re-render: set derived annotation state & position the editor
   useEffect(() => {
